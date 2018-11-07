@@ -8,13 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		FAF15F43218E5A9D00BE7AAA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF15F42218E5A9D00BE7AAA /* AppDelegate.m */; };
-		FAF15F46218E5A9D00BE7AAA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF15F45218E5A9D00BE7AAA /* ViewController.m */; };
+		FAF15F46218E5A9D00BE7AAA /* CarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF15F45218E5A9D00BE7AAA /* CarouselViewController.m */; };
 		FAF15F49218E5A9D00BE7AAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF15F47218E5A9D00BE7AAA /* Main.storyboard */; };
 		FAF15F4B218E5AA000BE7AAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAF15F4A218E5AA000BE7AAA /* Assets.xcassets */; };
 		FAF15F4E218E5AA000BE7AAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF15F4C218E5AA000BE7AAA /* LaunchScreen.storyboard */; };
 		FAF15F51218E5AA000BE7AAA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF15F50218E5AA000BE7AAA /* main.m */; };
 		FAF15F5B218E5AA000BE7AAA /* CarouselViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF15F5A218E5AA000BE7AAA /* CarouselViewTests.m */; };
 		FAF15F66218E5AA000BE7AAA /* CarouselViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF15F65218E5AA000BE7AAA /* CarouselViewUITests.m */; };
+		FAF15F76218E628D00BE7AAA /* CarouselCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF15F74218E628D00BE7AAA /* CarouselCardCell.m */; };
+		FAF15F77218E628D00BE7AAA /* CarouselCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF15F75218E628D00BE7AAA /* CarouselCardCell.xib */; };
+		FAF15F7E218FC99900BE7AAA /* FetchImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF15F7C218FC99900BE7AAA /* FetchImageOperation.m */; };
+		FAF15F7F218FC99900BE7AAA /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF15F7D218FC99900BE7AAA /* ImageLoader.m */; };
+		FAF15F82218FCA9900BE7AAA /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF15F81218FCA9900BE7AAA /* DataManager.m */; };
+		FAF15F86218FE1B700BE7AAA /* Vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF15F85218FE1B700BE7AAA /* Vehicle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +44,8 @@
 		FAF15F3E218E5A9D00BE7AAA /* CarouselView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarouselView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF15F41218E5A9D00BE7AAA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAF15F42218E5A9D00BE7AAA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FAF15F44218E5A9D00BE7AAA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FAF15F45218E5A9D00BE7AAA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FAF15F44218E5A9D00BE7AAA /* CarouselViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselViewController.h; sourceTree = "<group>"; };
+		FAF15F45218E5A9D00BE7AAA /* CarouselViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselViewController.m; sourceTree = "<group>"; };
 		FAF15F48218E5A9D00BE7AAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FAF15F4A218E5AA000BE7AAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAF15F4D218E5AA000BE7AAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +57,17 @@
 		FAF15F61218E5AA000BE7AAA /* CarouselViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarouselViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF15F65218E5AA000BE7AAA /* CarouselViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselViewUITests.m; sourceTree = "<group>"; };
 		FAF15F67218E5AA000BE7AAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAF15F73218E628D00BE7AAA /* CarouselCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselCardCell.h; sourceTree = "<group>"; };
+		FAF15F74218E628D00BE7AAA /* CarouselCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselCardCell.m; sourceTree = "<group>"; };
+		FAF15F75218E628D00BE7AAA /* CarouselCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselCardCell.xib; sourceTree = "<group>"; };
+		FAF15F7A218FC99800BE7AAA /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLoader.h; sourceTree = "<group>"; };
+		FAF15F7B218FC99800BE7AAA /* FetchImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchImageOperation.h; sourceTree = "<group>"; };
+		FAF15F7C218FC99900BE7AAA /* FetchImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchImageOperation.m; sourceTree = "<group>"; };
+		FAF15F7D218FC99900BE7AAA /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLoader.m; sourceTree = "<group>"; };
+		FAF15F80218FCA9900BE7AAA /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		FAF15F81218FCA9900BE7AAA /* DataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		FAF15F84218FE1B700BE7AAA /* Vehicle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vehicle.h; sourceTree = "<group>"; };
+		FAF15F85218FE1B700BE7AAA /* Vehicle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Vehicle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +118,11 @@
 		FAF15F40218E5A9D00BE7AAA /* CarouselView */ = {
 			isa = PBXGroup;
 			children = (
+				FAF15F83218FE1A500BE7AAA /* Model */,
+				FAF15F79218FC96E00BE7AAA /* Network */,
+				FAF15F78218FC95200BE7AAA /* View */,
 				FAF15F41218E5A9D00BE7AAA /* AppDelegate.h */,
 				FAF15F42218E5A9D00BE7AAA /* AppDelegate.m */,
-				FAF15F44218E5A9D00BE7AAA /* ViewController.h */,
-				FAF15F45218E5A9D00BE7AAA /* ViewController.m */,
 				FAF15F47218E5A9D00BE7AAA /* Main.storyboard */,
 				FAF15F4A218E5AA000BE7AAA /* Assets.xcassets */,
 				FAF15F4C218E5AA000BE7AAA /* LaunchScreen.storyboard */,
@@ -130,6 +148,40 @@
 				FAF15F67218E5AA000BE7AAA /* Info.plist */,
 			);
 			path = CarouselViewUITests;
+			sourceTree = "<group>";
+		};
+		FAF15F78218FC95200BE7AAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAF15F44218E5A9D00BE7AAA /* CarouselViewController.h */,
+				FAF15F45218E5A9D00BE7AAA /* CarouselViewController.m */,
+				FAF15F73218E628D00BE7AAA /* CarouselCardCell.h */,
+				FAF15F74218E628D00BE7AAA /* CarouselCardCell.m */,
+				FAF15F75218E628D00BE7AAA /* CarouselCardCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FAF15F79218FC96E00BE7AAA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FAF15F7B218FC99800BE7AAA /* FetchImageOperation.h */,
+				FAF15F7C218FC99900BE7AAA /* FetchImageOperation.m */,
+				FAF15F7A218FC99800BE7AAA /* ImageLoader.h */,
+				FAF15F7D218FC99900BE7AAA /* ImageLoader.m */,
+				FAF15F80218FCA9900BE7AAA /* DataManager.h */,
+				FAF15F81218FCA9900BE7AAA /* DataManager.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		FAF15F83218FE1A500BE7AAA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FAF15F84218FE1B700BE7AAA /* Vehicle.h */,
+				FAF15F85218FE1B700BE7AAA /* Vehicle.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAF15F4E218E5AA000BE7AAA /* LaunchScreen.storyboard in Resources */,
+				FAF15F77218E628D00BE7AAA /* CarouselCardCell.xib in Resources */,
 				FAF15F4B218E5AA000BE7AAA /* Assets.xcassets in Resources */,
 				FAF15F49218E5A9D00BE7AAA /* Main.storyboard in Resources */,
 			);
@@ -262,8 +315,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAF15F46218E5A9D00BE7AAA /* ViewController.m in Sources */,
+				FAF15F46218E5A9D00BE7AAA /* CarouselViewController.m in Sources */,
+				FAF15F7E218FC99900BE7AAA /* FetchImageOperation.m in Sources */,
+				FAF15F82218FCA9900BE7AAA /* DataManager.m in Sources */,
+				FAF15F76218E628D00BE7AAA /* CarouselCardCell.m in Sources */,
+				FAF15F86218FE1B700BE7AAA /* Vehicle.m in Sources */,
 				FAF15F51218E5AA000BE7AAA /* main.m in Sources */,
+				FAF15F7F218FC99900BE7AAA /* ImageLoader.m in Sources */,
 				FAF15F43218E5A9D00BE7AAA /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

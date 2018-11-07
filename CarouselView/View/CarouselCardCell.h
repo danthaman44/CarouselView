@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  CarouselCardCell.h
 //  CarouselView
 //
 //  Created by Dan Deng on 11/3/18.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface CarouselCardCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
-
