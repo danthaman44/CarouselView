@@ -13,29 +13,44 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CarouselCardCell" id="gTV-IL-0wX" customClass="CarouselCardCell">
-            <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="200" height="113"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="200" height="113"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bUf-QQ-WtU">
-                        <rect key="frame" x="10" y="10" width="180" height="80"/>
+                        <rect key="frame" x="10" y="10" width="180" height="65"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXK-Eu-SoU">
+                        <rect key="frame" x="30" y="79" width="140" height="30"/>
+                        <color key="backgroundColor" red="0.12631422210000001" green="0.1153756487" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="T0Q-vd-vm5"/>
+                        </constraints>
+                        <state key="normal" title="Hide">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="WXK-Eu-SoU" firstAttribute="top" secondItem="bUf-QQ-WtU" secondAttribute="bottom" constant="4" id="IXk-Vz-PTn"/>
+                <constraint firstItem="WXK-Eu-SoU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="L1V-NM-Wgr"/>
+                <constraint firstAttribute="trailing" secondItem="WXK-Eu-SoU" secondAttribute="trailing" constant="30" id="N3t-1E-Hng"/>
                 <constraint firstItem="bUf-QQ-WtU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="PIn-ET-Z2b"/>
                 <constraint firstAttribute="trailing" secondItem="bUf-QQ-WtU" secondAttribute="trailing" constant="10" id="Pvo-J1-CuS"/>
-                <constraint firstAttribute="bottom" secondItem="bUf-QQ-WtU" secondAttribute="bottom" constant="10" id="g18-mT-SOs"/>
+                <constraint firstAttribute="bottom" secondItem="WXK-Eu-SoU" secondAttribute="bottom" constant="4" id="hfo-4t-Bam"/>
+                <constraint firstItem="WXK-Eu-SoU" firstAttribute="top" secondItem="bUf-QQ-WtU" secondAttribute="bottom" constant="4" id="iiG-CP-IAq"/>
                 <constraint firstItem="bUf-QQ-WtU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="ydn-YN-4Em"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
-            <size key="customSize" width="194" height="87"/>
+            <size key="customSize" width="194" height="100"/>
             <connections>
+                <outlet property="hideButton" destination="WXK-Eu-SoU" id="CGK-6t-evh"/>
                 <outlet property="imageView" destination="bUf-QQ-WtU" id="2nJ-Fq-qlJ"/>
             </connections>
-            <point key="canvasLocation" x="19" y="42"/>
+            <point key="canvasLocation" x="19" y="35.5"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -22,6 +22,7 @@
 // MARK: - Constants
 
 static CGFloat const cardSpacing = 10;
+static CGFloat const animationDuration = 0.3;
 static NSInteger const pagingSize = 2;
 
 // MARK: - Properties
@@ -64,7 +65,7 @@ static NSInteger const pagingSize = 2;
     self.carouselCollectionView.prefetchDataSource = self;
     [self.carouselCollectionView registerNib:[UINib nibWithNibName:@"CarouselCardCell" bundle:nil] forCellWithReuseIdentifier:@"CarouselCardCell"];
 
-    self.carouselCollectionView.pagingEnabled = YES;
+    // Setup scrollView
     self.carouselCollectionView.prefetchingEnabled = YES;
     self.carouselCollectionView.showsHorizontalScrollIndicator = NO;
     self.carouselCollectionView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -76,17 +77,59 @@ static NSInteger const pagingSize = 2;
     [dataManager searchVehicles];
 }
 
+-(void)displayVehicleData {
+    if (vehicles.count == 0) {
+        self.nameLabel.text = @"No data";
+        self.capacityLabel.text = @"No data";
+    } else {
+        Vehicle *selectedVehicle = [self.vehicles objectAtIndex:self.currentIndexRow];
+        self.nameLabel.text = [NSString stringWithFormat:@"Name: %@", selectedVehicle.displayName];
+        self.capacityLabel.text = [NSString stringWithFormat:@"Capacity: %ld", selectedVehicle.capacity];
+    }
+}
+
 // MARK: - VehicleSearchDelegate
 
 -(void)updateSearchResults:(NSArray *)results {
     self.vehicles = results;
     [self.carouselCollectionView reloadData];
     [self.carouselCollectionView performBatchUpdates:^{
-        // No-op
     } completion:^(BOOL finished) {
         NSIndexPath *currentIndexPath = [NSIndexPath indexPathForRow:self.currentIndexRow inSection:0];
         UICollectionViewCell *currentCell = [self.carouselCollectionView cellForItemAtIndexPath:currentIndexPath];
         currentCell.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.1);
+    }];
+}
+
+// MARK: - CarouselCardDelegate
+
+-(void)hideCell:(UICollectionViewCell *)cell {
+    NSIndexPath *indexPath = [self.carouselCollectionView indexPathForCell:cell];
+    if (indexPath.row < 0 || indexPath.row >= self.vehicles.count) {
+        return;
+    }
+    [UIView animateWithDuration:animationDuration animations:^{
+        // First fade the cell away
+        cell.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        // Update the data source before updating collectionView UI
+        NSMutableArray *updatedVehicles = [self.vehicles mutableCopy];
+        [updatedVehicles removeObjectAtIndex:indexPath.row];
+        self.vehicles = updatedVehicles;
+        // Animate the cell deletion alongside the entry of the replacement cell
+        __block NSIndexPath *replacementIndexPath = indexPath; // indexPath of the item that replaces the deleted item
+        [UIView transitionWithView:self.carouselCollectionView duration:animationDuration options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            NSArray *indexPathsToDelete = @[[NSIndexPath indexPathForRow:indexPath.row inSection:0]];
+            [self.carouselCollectionView deleteItemsAtIndexPaths:indexPathsToDelete];
+            replacementIndexPath = indexPath.row == self.vehicles.count ? [NSIndexPath indexPathForRow:indexPath.row-1 inSection:0] : indexPath;
+            if (replacementIndexPath.row >= 0 && replacementIndexPath.row < self.vehicles.count) {
+                UICollectionViewCell *replacementCell = [self.carouselCollectionView cellForItemAtIndexPath:replacementIndexPath];
+                replacementCell.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.1);
+            }
+        } completion:^(BOOL finished) {
+            self.currentIndexRow = replacementIndexPath.row;
+            [self displayVehicleData];
+        }];
     }];
 }
 
@@ -95,6 +138,7 @@ static NSInteger const pagingSize = 2;
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.vehicles.count;
 }
+
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CarouselCardCell *cell = [self.carouselCollectionView dequeueReusableCellWithReuseIdentifier:@"CarouselCardCell" forIndexPath:indexPath];
@@ -105,6 +149,7 @@ static NSInteger const pagingSize = 2;
     [self.imageLoader loadImageFromUrl:vehicleToDisplay.imageUrl completion:^(UIImage *image) {
         cell.imageView.image = image;
     }];
+    cell.delegate = self;
     return cell;
 }
 
@@ -158,7 +203,7 @@ static NSInteger const pagingSize = 2;
     UICollectionViewCell *currentCell = [self.carouselCollectionView cellForItemAtIndexPath:currentIndexPath];
     UICollectionViewCell *nextCell = [self.carouselCollectionView cellForItemAtIndexPath:nextIndexPath];
 
-    [UIView animateWithDuration:0.3
+    [UIView animateWithDuration:animationDuration
          animations:^{
             currentCell.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
             nextCell.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.1);
@@ -167,10 +212,12 @@ static NSInteger const pagingSize = 2;
                                                         animated:NO];
         } completion:^(BOOL finished) {
             self.currentIndexRow = updatedIndexRow;
-            Vehicle *selectedVehicle = [self.vehicles objectAtIndex:self.currentIndexRow];
-            self.nameLabel.text = [NSString stringWithFormat:@"Name: %@", selectedVehicle.displayName];
-            self.capacityLabel.text = [NSString stringWithFormat:@"Capacity: %ld", selectedVehicle.capacity];
+            [self displayVehicleData];
         }];
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self snapToNextItemIn:scrollView];
 }
 
 -(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {

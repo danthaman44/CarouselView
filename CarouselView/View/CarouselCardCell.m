@@ -14,6 +14,19 @@
     [super awakeFromNib];
     self.backgroundColor = UIColor.lightGrayColor;
     self.layer.cornerRadius = 6.0;
+
+    // setup button
+    self.hideButton.layer.cornerRadius = 6.0;
+    [self.hideButton addTarget:self action:@selector(didTapHideButton:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)prepareForReuse {
+    [super prepareForReuse];
+    self.delegate = nil;
+}
+
+-(void)didTapHideButton:(UIButton*)button {
+    [self.delegate hideCell:self];
 }
 
 @end

@@ -16,7 +16,8 @@
                                                      UICollectionViewDelegate,
                                                      UICollectionViewDelegateFlowLayout,
                                                      UIScrollViewDelegate,
-                                                     VehicleSearchDelegate>
+                                                     VehicleSearchDelegate,
+                                                     CarouselCardDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *carouselCollectionView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
